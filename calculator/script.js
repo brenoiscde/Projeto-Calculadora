@@ -19,12 +19,17 @@ const zero = document.getElementById('zero');
 const deletar = document.getElementById('deletar');
 const calcular = document.getElementById('calcular');
 
+limpar.addEventListener('click', () =>{
+    listaDeCalculo.innerHTML = ""
+    resultado.innerHTML = ""
+})
 const listaDeNumeros = []
 limpar.addEventListener('click', () => {
     listaDeNumeros.splice(0, listaDeNumeros.length);
     
 })
 const listaDeCalculo = document.getElementById('listaDeCalculo')
+const resultado = document.getElementById('resultado')
 maisOuMenos.addEventListener('click', () => {
     encontroOSinal: for (let i = listaDeNumeros.length; i > 0; i--) {
         if (
@@ -45,68 +50,68 @@ porcentagem.addEventListener('click', () => {
 })
 divisao.addEventListener('click', () => {
     listaDeNumeros.push('/')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 
 sete.addEventListener('click', () => {
     listaDeNumeros.push('7')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 oito.addEventListener('click', () => {
     listaDeNumeros.push('8')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 nove.addEventListener('click', () => {
     listaDeNumeros.push('9')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 multiplicacao.addEventListener('click', () => {
     listaDeNumeros.push('*')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 quatro.addEventListener('click', () => {
     listaDeNumeros.push('4')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 cinco.addEventListener('click', () => {
     listaDeNumeros.push('5')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 seis.addEventListener('click', () => {
-    listaDeNumeros.push('/')
-    listaDeCalculo.innerHTML = formataLista()
+    listaDeNumeros.push('6')
+    resultado.innerHTML = formataLista()
 })
 subtracao.addEventListener('click', () => {
     listaDeNumeros.push('-')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 um.addEventListener('click', () => {
     listaDeNumeros.push('1')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 dois.addEventListener('click', () => {
     listaDeNumeros.push('2')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 tres.addEventListener('click', () => {
     listaDeNumeros.push('3')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 adicao.addEventListener('click', () => {
     listaDeNumeros.push('+')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 ponto.addEventListener('click', () => {
     listaDeNumeros.push('.')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 zero.addEventListener('click', () => {
     listaDeNumeros.push('0')
-    listaDeCalculo.innerHTML = formataLista()
+    resultado.innerHTML = formataLista()
 })
 deletar.addEventListener('click', () => {
     listaDeNumeros.pop()
-    formataLista()
+    resultado.innerHTML = formataLista()
 })
 function formataLista() {
     return listaDeNumeros.join("");
@@ -114,5 +119,7 @@ function formataLista() {
 calcular.addEventListener("click", () => {
     const numeroString = formataLista();
     const resultado = eval(numeroString)
-    document.getElementById("resultado").innerHTML = resultado;
+    listaDeNumeros.splice(0, listaDeNumeros.length, resultado)
+    document.getElementById("resultado").innerHTML = listaDeNumeros;
+    document.getElementById('listaDeCalculo').innerHTML = listaDeNumeros
 })
